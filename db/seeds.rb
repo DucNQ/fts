@@ -3,6 +3,16 @@ User.create(name: "Admin", email: "admin@example.com", password: "abc123", passw
   User.create(name: "User#{i}", email: "user#{i}@example.com", password: "abc123", password_confirmation: "abc123")
 end
 
+subject_list = [
+  "MySQL",
+  "MySQL Exercise",
+  "Ruby on Rails",
+  "Git"
+]
+subject_list.each do |name|
+  Subject.create(name: name)
+end
+
 #TODO 
 =begin
 subject_list = [

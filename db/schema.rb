@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140124104321) do
 
   create_table "answer_sheets", force: true do |t|
     t.integer  "user_id"
-    t.integer  "test_id"
+    t.integer  "exam_id"
     t.text     "answers"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -50,8 +50,12 @@ ActiveRecord::Schema.define(version: 20140124104321) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.integer  "admin",           default: 0
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

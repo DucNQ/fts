@@ -1,7 +1,21 @@
 class UsersController < ApplicationController
-
+  
   def index
-    @users = User.paginate page: params[:page]
+    @users = User.paginate page: params[:page], order: "created_at DESC"
+  end
+  
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create user_params
+    if @user.save
+      flash[:success] = "New account created successfully"
+      redirect_to users_path
+    else
+      render 'new'
+    end
   end
 
   def show

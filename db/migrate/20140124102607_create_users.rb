@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
     
-    change_column_default :users, :admin, 1
+    change_column_default :users, :admin, 0
     add_index :users, :remember_token
   end
 end
