@@ -5,6 +5,10 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find params[:id]
+    @questions = @subject.questions.paginate page: params[:page],
+      order: "created_at DESC", per_page: 5
+    @exams = @subject.exams.paginate page: params[:page],
+      order: "created_at DESC", per_page: 5
   end
 
   def new

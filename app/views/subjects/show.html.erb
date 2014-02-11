@@ -1,9 +1,9 @@
 <h1><%= link_to @subject.name, edit_subject_path(@subject) %></h1>
 
 <h3> Related questions </h3>
-
+<%= will_paginate(@questions) %>
 <ol>
-<% @subject.questions.each do |question| %>
+<% @questions.each do |question| %>
   <li>
   	<%= question.content %><br>
   	<h6>
@@ -11,6 +11,20 @@
   	  <%= getTypeName(question.question_type) %>
   	  <%= link_to "edit", edit_question_path(question) %>
   	  <%= link_to "delete", question, method: :delete, data: {confirm: "You sure?"} %>
+  	</h6>
+  </li>
+<% end %>
+</ol>
+<br><br>
+<h3> Related exam forms</h3>
+<%= will_paginate(@exams) %>
+<ol>
+<% @exams.each do |exam| %>
+  <li>
+  	<%= exam.name %><br>
+  	<h6>
+  	  <%= link_to "edit", edit_exam_path(exam) %>
+  	  <%= link_to "delete", exam, method: :delete, data: {confirm: "You sure?"} %>
   	</h6>
   </li>
 <% end %>
